@@ -10,11 +10,19 @@ import UIKit
 
 class FoodItemListDataProvider:NSObject, UITableViewDataSource, UITableViewDelegate
 {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+    
+    var foodItemManager: FoodItemManager!
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return foodItemManager?.itemCount() ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FoodItemCell
+        let foodItem = foodItemManager.itemAtIndex(indexPath.row)
+        cell.configCellWithItem(foodItem)
+        return cell
     }
 }

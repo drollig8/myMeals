@@ -18,7 +18,9 @@ class FoodItemListViewController: UIViewController
     
     
     
-    override func viewDidLoad() {
+    
+    override func viewDidLoad()
+    {
         tableView.dataSource = dataProvider
         tableView.delegate = dataProvider
     }
