@@ -20,6 +20,8 @@ class FoodItemManagerTests: XCTestCase
     
     override func tearDown()
     {
+        sut.removeAll()
+        sut = nil
         super.tearDown()
     }
     
@@ -79,9 +81,29 @@ class FoodItemManagerTests: XCTestCase
         sut.addItem(item)
         
         XCTAssertTrue(sut.itemCount() == 1,"Should only add item once.")
-        
     }
     
-
+    func test_FoodItemsCanBeSerialized()
+    {
+        var foodItemManager: FoodItemManager? = FoodItemManager()
+        
+        let firstItem = FoodItem(name: "FirstItem", calories: 7, carbs: 7, protein: 7, fat: 7)
+        foodItemManager?.addItem(firstItem)
+        
+        let secondItem = FoodItem(name: "SecondItem", calories: 7, carbs: 7, protein: 7, fat: 7)
+        foodItemManager?.addItem(secondItem)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(UIApplicationWillResignActiveNotification, object: nil)
+        
+        foodItemManager = nil
+        
+        XCTAssertNil(foodItemManager)
+        
+        foodItemManager = FoodItemManager()
+        
+        XCTAssertEqual(foodItemManager?.itemCount(), 2)
+        XCTAssertEqual(foodItemManager?.itemAtIndex(0), firstItem)
+        XCTAssertEqual(foodItemManager?.itemAtIndex(1), secondItem)
+    }
 
 }

@@ -102,6 +102,23 @@ class FoodItemListDataProviderTests: XCTestCase
         let cell = mockTableView.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0)) as! MockFoodItemCell!
         XCTAssertEqual(cell.foodItem, foodItem)
     }
+    
+    func testSelectingACell_SendsNotification()
+    {
+        let item = FoodItem(name: "First")
+        sut.foodItemManager?.addItem(item)
+        
+        expectationForNotification("ItemSelectedNotification",
+            object: nil) { (notification) -> Bool in
+                
+                guard let index = notification.userInfo?["index"] as? Int else { return false }
+                return index == 0
+        }
+        
+        tableView.delegate?.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        
+        waitForExpectationsWithTimeout(3, handler: nil)
+    }
 }
 
 extension FoodItemListDataProviderTests

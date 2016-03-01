@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class FoodItemListDataProvider:NSObject, UITableViewDataSource, UITableViewDelegate
 {
     
@@ -24,5 +25,10 @@ class FoodItemListDataProvider:NSObject, UITableViewDataSource, UITableViewDeleg
         let foodItem = foodItemManager.itemAtIndex(indexPath.row)
         cell.configCellWithItem(foodItem)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        NSNotificationCenter.defaultCenter().postNotificationName("ItemSelectedNotification", object: self, userInfo: ["index":indexPath.row])
     }
 }

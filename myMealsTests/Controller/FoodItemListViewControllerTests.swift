@@ -58,5 +58,17 @@ class FootItemListViewControllerTests: XCTestCase
         XCTAssertEqual(sut.tableView.dataSource as? FoodItemListDataProvider, sut.tableView.delegate as? FoodItemListDataProvider, "Should be the same object otherwise could result in data mismatch")
     }
     
+    func testItemListViewController_HasAddBarButtonWithSelfAsTarget()
+    {
+        print(sut.navigationItem.rightBarButtonItem?.target)
+        XCTAssertEqual(sut.navigationItem.rightBarButtonItem?.target as? UIViewController, sut)
+        
+        // to get this passed we need to add a button with action
+    }
+    
+    func testAddItem_PresentsAddItemViewController()
+    {
+        
+    }
     
 }

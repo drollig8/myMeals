@@ -22,6 +22,8 @@ class FoodItemTests: XCTestCase
         super.tearDown()
     }
     
+    // MARK: - Init
+    
     func testInit_ShouldTakeName()
     {
         let item = FoodItem(name: "Test")
@@ -52,6 +54,8 @@ class FoodItemTests: XCTestCase
         XCTAssertEqual(item.fat, 30, "Fat should be set")
     }
     
+    // MARK: - Equality
+    
     func testEqualItems_ShouldBeEqual()
     {
         let firstItem = FoodItem(name: "Test")
@@ -65,4 +69,27 @@ class FoodItemTests: XCTestCase
         let secondItem = FoodItem(name: "Test1")
         XCTAssertNotEqual(firstItem, secondItem, "items should be not equal")
     }
+    
+    // MARK: - Serialization
+    
+    func test_HasPlistDictionaryProperty()
+    {
+        let item = FoodItem(name: "First")
+        let dictionary = item.plistDict
+        
+        XCTAssertNotNil(dictionary)
+        XCTAssertTrue(dictionary is NSDictionary)
+        
+    }
+    
+    func test_CanBeCreatedFromPlistDictionary()
+    {
+        let foodItem = FoodItem(name: "Test", calories: 123, carbs: 32, protein: 23, fat: 23)
+        let dict = foodItem.plistDict
+        let recreatedItem = FoodItem(dict: dict)
+        print(recreatedItem)
+        XCTAssertEqual(foodItem, recreatedItem)
+        
+    }
+
 }

@@ -167,8 +167,8 @@
 		6E1C62331C844A6D0086FAFC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6E1C62371C844AAC0086FAFC /* FoodItemListViewController.swift */,
 				6E1C623D1C844FA00086FAFC /* FoodItemListDataProvider.swift */,
+				6E1C62371C844AAC0086FAFC /* FoodItemListViewController.swift */,
 				6E1C62411C84AAFB0086FAFC /* FoodItemCell.swift */,
 			);
 			name = Controller;
@@ -177,8 +177,8 @@
 		6E1C62341C844A730086FAFC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6E1C62351C844A9B0086FAFC /* FoodItemListViewControllerTests.swift */,
 				6E1C623F1C8456150086FAFC /* FoodItemListDataProviderTests.swift */,
+				6E1C62351C844A9B0086FAFC /* FoodItemListViewControllerTests.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -488,6 +488,7 @@
 				6E1C62191C84287F0086FAFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6E1C621A1C84287F0086FAFC /* Build configuration list for PBXNativeTarget "myMealsTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +497,7 @@
 				6E1C621C1C84287F0086FAFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

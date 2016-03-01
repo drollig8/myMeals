@@ -16,13 +16,16 @@ class FoodItemListViewController: UIViewController
     @IBOutlet var dataProvider: protocol<UITableViewDataSource,UITableViewDelegate>!
     //ehemals: @IBOutlet var dataProvider: FoodItemListDataProvider!
     
-    
-    
+
     
     override func viewDidLoad()
     {
         tableView.dataSource = dataProvider
         tableView.delegate = dataProvider
+    }
+    
+    @IBAction func addItem(sender: UIBarButtonItem)
+    {
     }
 }
 
