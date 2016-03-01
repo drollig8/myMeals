@@ -13,7 +13,7 @@ class FoodItemListViewController: UIViewController
     @IBOutlet weak var tableView: UITableView!
     
     // complaint IBOutlet cannot have non @objc class Type: Make class subclass of NSObject
-    @IBOutlet var dataProvider: protocol<UITableViewDataSource,UITableViewDelegate>!
+    @IBOutlet var dataProvider: protocol<UITableViewDataSource,UITableViewDelegate,ItemManagerSettable>!
     //ehemals: @IBOutlet var dataProvider: FoodItemListDataProvider!
     
     var itemManager: FoodItemManager!
@@ -22,6 +22,7 @@ class FoodItemListViewController: UIViewController
     {
         tableView.dataSource = dataProvider
         tableView.delegate = dataProvider
+        dataProvider.foodItemManager = self.itemManager
     }
     
     @IBAction func addItem(sender: UIBarButtonItem)

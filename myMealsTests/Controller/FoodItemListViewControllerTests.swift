@@ -65,40 +65,55 @@ class FootItemListViewControllerTests: XCTestCase
         // to get this passed we need to add a button with action
     }
     
-    func testAddItem_PresentsAddItemViewController()
+    func presentAddFoodItemViewController() -> AddFoodItemViewController
     {
         XCTAssertNil(sut.presentedViewController)
-        
-        guard let addButton = sut.navigationItem.rightBarButtonItem else { XCTFail(); return }
+        guard let addButton = sut.navigationItem.rightBarButtonItem else { XCTFail(); fatalError() }
         
         UIApplication.sharedApplication().keyWindow?.rootViewController = sut
         
         sut.performSelector(addButton.action, withObject: addButton)
-        
         XCTAssertNotNil(sut.presentedViewController)
         XCTAssertTrue(sut.presentedViewController is AddFoodItemViewController)
         
-        let inputViewController = sut.presentedViewController as! AddFoodItemViewController
+        return sut.presentedViewController as! AddFoodItemViewController
+    }
+    func testAddItem_PresentsAddItemViewController()
+    {
+        let inputViewController = presentAddFoodItemViewController()
         XCTAssertNotNil(inputViewController.nameTextField)
-        
     }
     
     func testItemListVC_SharesItemManagerWithInputVC()
     {
-        XCTAssertNil(sut.presentedViewController)
-        
-        guard let addButton = sut.navigationItem.rightBarButtonItem else { XCTFail(); return }
-        
-        UIApplication.sharedApplication().keyWindow?.rootViewController = sut
-        
-        sut.performSelector(addButton.action, withObject: addButton)
-        
-        
-        XCTAssertNotNil(sut.presentedViewController)
-        XCTAssertTrue(sut.presentedViewController is AddFoodItemViewController)
-        
-        let inputViewController = sut.presentedViewController as! AddFoodItemViewController
+        let inputViewController = presentAddFoodItemViewController()
         XCTAssertEqual(inputViewController.itemManager, sut.itemManager)
     }
     
+    func testViewDidLoad_SetsItemManagerToDataProvider()
+    {
+        XCTAssertTrue(sut.itemManager === sut.dataProvider.foodItemManager)
+    }
+    
+    func testItemSelectedNotification_PushesAddAmountVC()
+    {
+        let mockNavigationController = MockNavigationController(rootViewController: sut)
+        UIApplication.sharedApplication().keyWindow?.rootViewController = mockNavigationController
+        _ = sut.view
+        NSNotificationCenter.defaultCenter().postNotificationName("ItemSelectedNotification", object: self, userInfo: ["index":0])
+        guard let detailViewController =  mockNavigationController.topViewController as
+    }
+    
+}
+
+extension FootItemListViewControllerTests
+{
+    class MockNavigationController: UINavigationController
+    {
+        var pushedViewController: UIViewController?
+        override func pushViewController(viewController: UIViewController, animated: Bool) {
+            pushedViewController = viewController
+            super.pushViewController(viewController, animated: animated)
+        }
+    }
 }

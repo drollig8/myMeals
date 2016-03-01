@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol ItemManagerSettable
+{
+    var foodItemManager: FoodItemManager? {get set}
+}
 
 class FoodItemListDataProvider:NSObject, UITableViewDataSource, UITableViewDelegate
 {
