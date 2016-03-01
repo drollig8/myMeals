@@ -22,7 +22,12 @@ class FoodItemListViewController: UIViewController
     {
         tableView.dataSource = dataProvider
         tableView.delegate = dataProvider
-        dataProvider.foodItemManager = self.itemManager
+        
+        dataProvider.foodItemManager = itemManager
+        
+        // muss auf Notifications hören und den AddAmountVC Instantiieren
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "addAmount:", name: "ItemSelectedNotification", object: nil)
     }
     
     @IBAction func addItem(sender: UIBarButtonItem)
@@ -30,6 +35,20 @@ class FoodItemListViewController: UIViewController
         if let nextViewController = storyboard?.instantiateViewControllerWithIdentifier("AddFoodItemViewController") as? AddFoodItemViewController {
             nextViewController.itemManager = self.itemManager
             presentViewController(nextViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func addAmount(sender:NSNotification)
+    {
+        guard let index = sender.userInfo?["index"] as? Int else
+        { fatalError() }
+        
+        if let nextViewController = storyboard?.instantiateViewControllerWithIdentifier(
+            "AddAmountViewController") as? AddAmountViewController {
+                
+                nextViewController.itemInfo = (itemManager, index)
+                navigationController?.pushViewController(nextViewController,
+                    animated: true)
         }
     }
 }

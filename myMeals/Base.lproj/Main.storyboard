@@ -39,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bP9-8y-OK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659" y="226"/>
+            <point key="canvasLocation" x="779" y="183"/>
         </scene>
         <!--Food Item List View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -121,13 +121,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="r2L-Bt-7Rf" customClass="FoodItemListDataProvider" customModule="myMeals" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="952" y="357"/>
+            <point key="canvasLocation" x="348" y="183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vAs-qf-oBO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="skU-KW-PpX" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cwb-Ei-Oge">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -139,7 +140,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEG-9K-inn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="357"/>
+            <point key="canvasLocation" x="-72" y="183"/>
+        </scene>
+        <!--Add Amount View Controller-->
+        <scene sceneID="JY1-sn-bK8">
+            <objects>
+                <viewController storyboardIdentifier="AddAmountViewController" id="dFL-1g-t2u" customClass="AddAmountViewController" customModule="myMeals" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yY3-v1-BQy"/>
+                        <viewControllerLayoutGuide type="bottom" id="x3I-cN-yg9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jot-vV-jJe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqG-nL-zTh">
+                                <rect key="frame" x="65" y="129" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kPs-OR-V1J">
+                                <rect key="frame" x="51" y="40" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="kPs-OR-V1J" id="JPt-Fd-1BX"/>
+                        <outlet property="nameTextLabel" destination="cqG-nL-zTh" id="XtZ-Xi-Pdc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gyx-az-Ryx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-72" y="893"/>
         </scene>
     </scenes>
 </document>

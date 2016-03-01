@@ -100,8 +100,26 @@ class FootItemListViewControllerTests: XCTestCase
         let mockNavigationController = MockNavigationController(rootViewController: sut)
         UIApplication.sharedApplication().keyWindow?.rootViewController = mockNavigationController
         _ = sut.view
-        NSNotificationCenter.defaultCenter().postNotificationName("ItemSelectedNotification", object: self, userInfo: ["index":0])
-        guard let detailViewController =  mockNavigationController.topViewController as
+        sut.itemManager = FoodItemManager()
+    NSNotificationCenter.defaultCenter().postNotificationName("ItemSelectedNotification", object: self, userInfo: ["index":0])
+        
+        // prüfe, dass addAc´mount gepushed urd
+        guard let addAmounViewController =  mockNavigationController.topViewController as? AddAmountViewController else {fatalError()}
+        
+        // check itemManager
+        guard let addAmounItemManager = addAmounViewController.itemInfo?.0 else
+        { XCTFail(); return }
+        
+        // check Index of fooditem
+        guard let index = addAmounViewController.itemInfo?.1 else
+        { XCTFail(); return }
+        
+        _ = addAmounViewController.view
+        
+        XCTAssertNotNil(addAmounViewController.nameTextLabel)
+        XCTAssertTrue(addAmounViewController === sut.itemManager)
+        XCTAssertEqual(index, 1)
+        
     }
     
 }

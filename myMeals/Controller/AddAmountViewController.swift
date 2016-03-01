@@ -10,5 +10,6 @@ import UIKit
 
 class AddAmountViewController: UIViewController
 {
-    <#properties and methods#>
+    var itemInfo: (FoodItemManager, Int)?
+    @IBOutlet weak var nameTextLabel: UILabel!
 }
