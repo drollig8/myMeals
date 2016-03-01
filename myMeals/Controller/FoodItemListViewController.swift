@@ -16,7 +16,7 @@ class FoodItemListViewController: UIViewController
     @IBOutlet var dataProvider: protocol<UITableViewDataSource,UITableViewDelegate>!
     //ehemals: @IBOutlet var dataProvider: FoodItemListDataProvider!
     
-
+    var itemManager: FoodItemManager!
     
     override func viewDidLoad()
     {
@@ -26,6 +26,10 @@ class FoodItemListViewController: UIViewController
     
     @IBAction func addItem(sender: UIBarButtonItem)
     {
+        if let nextViewController = storyboard?.instantiateViewControllerWithIdentifier("AddFoodItemViewController") as? AddFoodItemViewController {
+            nextViewController.itemManager = self.itemManager
+            presentViewController(nextViewController, animated: true, completion: nil)
+        }
     }
 }
 

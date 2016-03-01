@@ -26,6 +26,7 @@
 		6E1C623E1C844FA00086FAFC /* FoodItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C623D1C844FA00086FAFC /* FoodItemListDataProvider.swift */; };
 		6E1C62401C8456150086FAFC /* FoodItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C623F1C8456150086FAFC /* FoodItemListDataProviderTests.swift */; };
 		6E1C62421C84AAFB0086FAFC /* FoodItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C62411C84AAFB0086FAFC /* FoodItemCell.swift */; };
+		6E1C62441C857E170086FAFC /* AddFoodItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C62431C857E170086FAFC /* AddFoodItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		6E1C623D1C844FA00086FAFC /* FoodItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoodItemListDataProvider.swift; path = Controller/FoodItemListDataProvider.swift; sourceTree = "<group>"; };
 		6E1C623F1C8456150086FAFC /* FoodItemListDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoodItemListDataProviderTests.swift; path = Controller/FoodItemListDataProviderTests.swift; sourceTree = "<group>"; };
 		6E1C62411C84AAFB0086FAFC /* FoodItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoodItemCell.swift; path = Controller/FoodItemCell.swift; sourceTree = "<group>"; };
+		6E1C62431C857E170086FAFC /* AddFoodItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFoodItemViewController.swift; path = Controller/AddFoodItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				6E1C623D1C844FA00086FAFC /* FoodItemListDataProvider.swift */,
 				6E1C62371C844AAC0086FAFC /* FoodItemListViewController.swift */,
 				6E1C62411C84AAFB0086FAFC /* FoodItemCell.swift */,
+				6E1C62431C857E170086FAFC /* AddFoodItemViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				6E1C62421C84AAFB0086FAFC /* FoodItemCell.swift in Sources */,
 				6E1C62241C842B190086FAFC /* FoodItem.swift in Sources */,
 				6E1C61FE1C84287F0086FAFC /* AppDelegate.swift in Sources */,
+				6E1C62441C857E170086FAFC /* AddFoodItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

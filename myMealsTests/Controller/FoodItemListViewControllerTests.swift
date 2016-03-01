@@ -60,7 +60,6 @@ class FootItemListViewControllerTests: XCTestCase
     
     func testItemListViewController_HasAddBarButtonWithSelfAsTarget()
     {
-        print(sut.navigationItem.rightBarButtonItem?.target)
         XCTAssertEqual(sut.navigationItem.rightBarButtonItem?.target as? UIViewController, sut)
         
         // to get this passed we need to add a button with action
@@ -68,7 +67,38 @@ class FootItemListViewControllerTests: XCTestCase
     
     func testAddItem_PresentsAddItemViewController()
     {
+        XCTAssertNil(sut.presentedViewController)
         
+        guard let addButton = sut.navigationItem.rightBarButtonItem else { XCTFail(); return }
+        
+        UIApplication.sharedApplication().keyWindow?.rootViewController = sut
+        
+        sut.performSelector(addButton.action, withObject: addButton)
+        
+        XCTAssertNotNil(sut.presentedViewController)
+        XCTAssertTrue(sut.presentedViewController is AddFoodItemViewController)
+        
+        let inputViewController = sut.presentedViewController as! AddFoodItemViewController
+        XCTAssertNotNil(inputViewController.nameTextField)
+        
+    }
+    
+    func testItemListVC_SharesItemManagerWithInputVC()
+    {
+        XCTAssertNil(sut.presentedViewController)
+        
+        guard let addButton = sut.navigationItem.rightBarButtonItem else { XCTFail(); return }
+        
+        UIApplication.sharedApplication().keyWindow?.rootViewController = sut
+        
+        sut.performSelector(addButton.action, withObject: addButton)
+        
+        
+        XCTAssertNotNil(sut.presentedViewController)
+        XCTAssertTrue(sut.presentedViewController is AddFoodItemViewController)
+        
+        let inputViewController = sut.presentedViewController as! AddFoodItemViewController
+        XCTAssertEqual(inputViewController.itemManager, sut.itemManager)
     }
     
 }
